@@ -128,10 +128,3 @@ let g:toolbar_cursor_state = 1
 anoremenu icon=cursor-none 1.990 ToolBar.Cursor :call g:Toggle_Toolbar_Cursor()<CR>
 tmenu ToolBar.Cursor Change Cursor Highlighting
 
-
-
-
-" ¶ ˽
-"
-
-
