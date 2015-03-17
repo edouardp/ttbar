@@ -11,12 +11,12 @@ function! g:Toggle_Toolbar_80th()
     aunmenu ToolBar.80th
     if g:toolbar_80th_state == 1
         let g:toolbar_80th_state = 2
-        anoremenu icon=80th-enabled 960 ToolBar.80th :call g:Toggle_Toolbar_80th()<CR>
+        anoremenu icon=80th-enabled 1.960 ToolBar.80th :call g:Toggle_Toolbar_80th()<CR>
         set colorcolumn=80
         echo "On"
     else
         let g:toolbar_80th_state = 1
-        anoremenu icon=80th-disabled 960 ToolBar.80th :call g:Toggle_Toolbar_80th()<CR>
+        anoremenu icon=80th-disabled 1.960 ToolBar.80th :call g:Toggle_Toolbar_80th()<CR>
         set colorcolumn=0
         echo "Off"
     endif
@@ -24,7 +24,7 @@ function! g:Toggle_Toolbar_80th()
 endfunction
 
 let g:toolbar_80th_state = 1
-anoremenu icon=80th-disabled 960 ToolBar.80th :call g:Toggle_Toolbar_80th()<CR>
+anoremenu icon=80th-disabled 1.960 ToolBar.80th :call g:Toggle_Toolbar_80th()<CR>
 tmenu ToolBar.80th 80th Column Indicator
 
 
@@ -37,12 +37,12 @@ function! g:Toggle_Toolbar_Fold()
     aunmenu ToolBar.Fold
     if g:toolbar_fold_state == 1
         let g:toolbar_fold_state = 2
-        anoremenu icon=fold-enabled 970 ToolBar.Fold :call g:Toggle_Toolbar_Fold()<CR>
+        anoremenu icon=fold-enabled 1.970 ToolBar.Fold :call g:Toggle_Toolbar_Fold()<CR>
         set foldcolumn=4
         echo "On"
     else
         let g:toolbar_fold_state = 1
-        anoremenu icon=fold-disabled 970 ToolBar.Fold :call g:Toggle_Toolbar_Fold()<CR>
+        anoremenu icon=fold-disabled 1.970 ToolBar.Fold :call g:Toggle_Toolbar_Fold()<CR>
         set foldcolumn=0
         echo "Off"
     endif
@@ -50,7 +50,7 @@ function! g:Toggle_Toolbar_Fold()
 endfunction
 
 let g:toolbar_fold_state = 1
-anoremenu icon=fold-disabled 970 ToolBar.Fold :call g:Toggle_Toolbar_Fold()<CR>
+anoremenu icon=fold-disabled 1.970 ToolBar.Fold :call g:Toggle_Toolbar_Fold()<CR>
 tmenu ToolBar.Fold Toggle Fold Column
 
 
@@ -63,7 +63,7 @@ function! g:Toggle_Toolbar_Hidden()
 	aunmenu ToolBar.Hidden
 	if g:toolbar_hidden_state == 1
 		let g:toolbar_hidden_state = 2
-		anoremenu icon=hidden-enabled 980 ToolBar.Hidden :call g:Toggle_Toolbar_Hidden()<CR>
+		anoremenu icon=hidden-enabled 1.980 ToolBar.Hidden :call g:Toggle_Toolbar_Hidden()<CR>
 
 		"set lcs+=eol:¶,tab:
 		set lcs=tab:▸·,eol:¬,nbsp:_
@@ -75,7 +75,7 @@ function! g:Toggle_Toolbar_Hidden()
 		echo "On"
 	else
 		let g:toolbar_hidden_state = 1
-		anoremenu icon=hidden-disabled 980 ToolBar.Hidden :call g:Toggle_Toolbar_Hidden()<CR>
+		anoremenu icon=hidden-disabled 1.980 ToolBar.Hidden :call g:Toggle_Toolbar_Hidden()<CR>
 
 		syn clear blort
 		set isprint=@,~-159,161-255
@@ -87,7 +87,7 @@ function! g:Toggle_Toolbar_Hidden()
 endfunction
 
 let g:toolbar_hidden_state = 1
-anoremenu icon=hidden-disabled 980 ToolBar.Hidden :call g:Toggle_Toolbar_Hidden()<CR>
+anoremenu icon=hidden-disabled 1.980 ToolBar.Hidden :call g:Toggle_Toolbar_Hidden()<CR>
 tmenu ToolBar.Hidden Toggle Hidden Chars
 
 
@@ -98,7 +98,7 @@ function! g:Toggle_Toolbar_Cursor()
 	aunmenu ToolBar.Cursor
 	if g:toolbar_cursor_state == 1
 		let g:toolbar_cursor_state = 2
-		anoremenu icon=cursor-none 990 ToolBar.Cursor :call g:Toggle_Toolbar_Cursor()<CR>
+		anoremenu icon=cursor-none 1.990 ToolBar.Cursor :call g:Toggle_Toolbar_Cursor()<CR>
 
 		set nocursorcolumn
 		set nocursorline
@@ -106,7 +106,7 @@ function! g:Toggle_Toolbar_Cursor()
 		echo "Off"
 	elseif g:toolbar_cursor_state == 2
 		let g:toolbar_cursor_state = 3
-		anoremenu icon=cursor-horiz 990 ToolBar.Cursor :call g:Toggle_Toolbar_Cursor()<CR>
+		anoremenu icon=cursor-horiz 1.990 ToolBar.Cursor :call g:Toggle_Toolbar_Cursor()<CR>
 
 		set nocursorcolumn
 		set cursorline
@@ -114,7 +114,7 @@ function! g:Toggle_Toolbar_Cursor()
 		echo "Line"
     else
 		let g:toolbar_cursor_state = 1
-		anoremenu icon=cursor-both 990 ToolBar.Cursor :call g:Toggle_Toolbar_Cursor()<CR>
+		anoremenu icon=cursor-both 1.990 ToolBar.Cursor :call g:Toggle_Toolbar_Cursor()<CR>
 
 		set cursorcolumn
 		set cursorline
@@ -125,7 +125,7 @@ function! g:Toggle_Toolbar_Cursor()
 endfunction
 
 let g:toolbar_cursor_state = 1
-anoremenu icon=cursor-none 990 ToolBar.Cursor :call g:Toggle_Toolbar_Cursor()<CR>
+anoremenu icon=cursor-none 1.990 ToolBar.Cursor :call g:Toggle_Toolbar_Cursor()<CR>
 tmenu ToolBar.Cursor Change Cursor Highlighting
 
 
