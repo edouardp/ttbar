@@ -13,12 +13,12 @@ function! g:Toggle_Toolbar_Nerdtree()
     if g:toolbar_nerdtree_state == 1
         let g:toolbar_nerdtree_state = 2
         anoremenu icon=nerdtree-on 1.950 ToolBar.NERDTree :call g:Toggle_Toolbar_Nerdtree()<CR>
-        NERDTreeToggle
+        NERDTree
         echo "NERDTree On"
     else
         let g:toolbar_nerdtree_state = 1
         anoremenu icon=nerdtree-off 1.950 ToolBar.NERDTree :call g:Toggle_Toolbar_Nerdtree()<CR>
-        NERDTreeToggle
+        NERDTreeClose
         echo "NERDTree Off"
     endif
     tmenu ToolBar.NERDTree Toggle NERDTree
@@ -48,9 +48,47 @@ function! g:Toggle_Toolbar_Fold()
     tmenu ToolBar.Fold Toggle Fold Column
 endfunction
 
-let g:toolbar_fold_state = 1
-anoremenu icon=fold-disabled 1.970 ToolBar.Fold :call g:Toggle_Toolbar_Fold()<CR>
+let g:toolbar_fold_state = 2
+anoremenu icon=fold-enabled 1.970 ToolBar.Fold :call g:Toggle_Toolbar_Fold()<CR>
 tmenu ToolBar.Fold Toggle Fold Column
+
+
+function! g:Toggle_Toolbar_Number()
+    if !exists('g:toolbar_number_state')
+        let g:toolbar_number_state = 2
+    endif
+    aunmenu ToolBar.Number
+    if g:toolbar_number_state == 1
+        let g:toolbar_number_state = 2
+        anoremenu icon=number-number 1.975 ToolBar.Number :call g:Toggle_Toolbar_Number()<CR>
+        set number
+        set norelativenumber
+        echo "Numbers On"
+    elseif g:toolbar_number_state == 2
+        let g:toolbar_number_state = 3
+        anoremenu icon=number-relative 1.975 ToolBar.Number :call g:Toggle_Toolbar_Number()<CR>
+        set nonumber
+        set relativenumber
+        echo "Relative Numbers On"
+    elseif g:toolbar_number_state == 3
+        let g:toolbar_number_state = 4
+        anoremenu icon=number-both 1.975 ToolBar.Number :call g:Toggle_Toolbar_Number()<CR>
+        set number
+        set relativenumber
+        echo "Relative Numbers + Line On"
+    elseif g:toolbar_number_state == 4
+        let g:toolbar_number_state = 1
+        anoremenu icon=number-none 1.975 ToolBar.Number :call g:Toggle_Toolbar_Number()<CR>
+        set nonumber
+        set norelativenumber
+        echo "Numbers Off"
+    endif
+    tmenu ToolBar.Number Toggle Number Column
+endfunction
+
+let g:toolbar_number_state = 1
+anoremenu icon=number-none 1.975 ToolBar.Number :call g:Toggle_Toolbar_Number()<CR>
+tmenu ToolBar.Number Toggle Number Column
 
 
 set lcs+=tab:>-
@@ -149,6 +187,30 @@ endfunction
 let g:toolbar_80th_state = 1
 anoremenu icon=80th-disabled 1.995 ToolBar.80th :call g:Toggle_Toolbar_80th()<CR>
 tmenu ToolBar.80th 80th Column Indicator
+
+
+function! g:Toggle_Toolbar_Matchmaker()
+    if !exists('g:toolbar_matchmaker_state')
+        let g:toolbar_matchmaker_state = 2
+    endif
+    aunmenu ToolBar.Matchmaker
+    if g:toolbar_matchmaker_state == 1
+        let g:toolbar_matchmaker_state = 2
+        anoremenu icon=matchmaker-on 1.996 ToolBar.Matchmaker :call g:Toggle_Toolbar_Matchmaker()<CR>
+        Matchmaker
+        echo "Matchmaker On"
+    else
+        let g:toolbar_matchmaker_state = 1
+        anoremenu icon=matchmaker-off 1.996 ToolBar.Matchmaker :call g:Toggle_Toolbar_Matchmaker()<CR>
+        Matchmaker!
+        echo "Matchmaker Off"
+    endif
+    tmenu ToolBar.Matchmaker Toggle Matchmaker
+endfunction
+
+let g:toolbar_matchmaker_state = 1
+anoremenu icon=Matchmaker-off 1.996 ToolBar.Matchmaker :call g:Toggle_Toolbar_Matchmaker()<CR>
+tmenu ToolBar.Matchmaker Toggle Matchmaker
 
 
 function! g:Toggle_Toolbar_Tagbar()
