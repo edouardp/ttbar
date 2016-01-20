@@ -29,6 +29,7 @@ anoremenu icon=nerdtree-off 1.950 ToolBar.NERDTree :call g:Toggle_Toolbar_Nerdtr
 tmenu ToolBar.NERDTree Toggle NERDTree
 
 
+
 function! g:Display_Toolbar_Fold()
     aunmenu ToolBar.Fold
     if &foldcolumn
@@ -172,6 +173,7 @@ anoremenu icon=cursor-none 1.990 ToolBar.Cursor :call g:Toggle_Toolbar_Cursor()<
 tmenu ToolBar.Cursor Change Cursor Highlighting
 
 
+
 function! g:Display_Toolbar_80th()
     aunmenu ToolBar.80th
     if &colorcolumn
@@ -233,6 +235,7 @@ endfunction
 let g:toolbar_matchmaker_state = 1
 anoremenu icon=Matchmaker-off 1.996 ToolBar.Matchmaker :call g:Toggle_Toolbar_Matchmaker()<CR>
 tmenu ToolBar.Matchmaker Toggle Matchmaker
+
 
 
 function! g:Toggle_Toolbar_Tagbar()
