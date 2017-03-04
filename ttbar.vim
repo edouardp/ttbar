@@ -233,7 +233,7 @@ function! g:Toggle_Toolbar_Matchmaker()
 endfunction
 
 let g:toolbar_matchmaker_state = 1
-anoremenu icon=Matchmaker-off 1.996 ToolBar.Matchmaker :call g:Toggle_Toolbar_Matchmaker()<CR>
+anoremenu icon=matchmaker-off 1.996 ToolBar.Matchmaker :call g:Toggle_Toolbar_Matchmaker()<CR>
 tmenu ToolBar.Matchmaker Toggle Matchmaker
 
 
@@ -245,12 +245,12 @@ function! g:Toggle_Toolbar_Tagbar()
     aunmenu ToolBar.Tagbar
     if g:toolbar_tagbar_state == 1
         let g:toolbar_tagbar_state = 2
-        anoremenu icon=Tagbar-on 1.998 ToolBar.Tagbar :call g:Toggle_Toolbar_Tagbar()<CR>
+        anoremenu icon=tagbar-on 1.998 ToolBar.Tagbar :call g:Toggle_Toolbar_Tagbar()<CR>
         TagbarToggle
         echo "Tagbar On"
     else
         let g:toolbar_tagbar_state = 1
-        anoremenu icon=Tagbar-off 1.998 ToolBar.Tagbar :call g:Toggle_Toolbar_Tagbar()<CR>
+        anoremenu icon=tagbar-off 1.998 ToolBar.Tagbar :call g:Toggle_Toolbar_Tagbar()<CR>
         TagbarToggle
         echo "Tagbar Off"
     endif
@@ -258,7 +258,7 @@ function! g:Toggle_Toolbar_Tagbar()
 endfunction
 
 let g:toolbar_tagbar_state = 1
-anoremenu icon=Tagbar-off 1.998 ToolBar.Tagbar :call g:Toggle_Toolbar_Tagbar()<CR>
+anoremenu icon=tagbar-off 1.998 ToolBar.Tagbar :call g:Toggle_Toolbar_Tagbar()<CR>
 tmenu ToolBar.Tagbar Toggle Tagbar
 
 
@@ -270,12 +270,12 @@ function! g:Toggle_Toolbar_Zoomwin()
     aunmenu ToolBar.Zoomwin
     if g:toolbar_zoomwin_state == 1
         let g:toolbar_zoomwin_state = 2
-        anoremenu icon=Zoomwin-on 1.999 ToolBar.Zoomwin :call g:Toggle_Toolbar_Zoomwin()<CR>
+        anoremenu icon=zoomwin-on 1.999 ToolBar.Zoomwin :call g:Toggle_Toolbar_Zoomwin()<CR>
         ZoomWin
         echo "Zoomwin On"
     else
         let g:toolbar_zoomwin_state = 1
-        anoremenu icon=Zoomwin-off 1.999 ToolBar.Zoomwin :call g:Toggle_Toolbar_Zoomwin()<CR>
+        anoremenu icon=zoomwin-off 1.999 ToolBar.Zoomwin :call g:Toggle_Toolbar_Zoomwin()<CR>
         ZoomWin
         echo "Zoomwin Off"
     endif
@@ -283,5 +283,5 @@ function! g:Toggle_Toolbar_Zoomwin()
 endfunction
 
 let g:toolbar_zoomwin_state = 1
-anoremenu icon=Zoomwin-off 1.999 ToolBar.Zoomwin :call g:Toggle_Toolbar_Zoomwin()<CR>
+anoremenu icon=zoomwin-off 1.999 ToolBar.Zoomwin :call g:Toggle_Toolbar_Zoomwin()<CR>
 tmenu ToolBar.Zoomwin Toggle Zoomwin
