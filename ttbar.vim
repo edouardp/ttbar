@@ -1,8 +1,9 @@
 
 "amenu 950 ToolBar.-SEP950- :<CR>
 aunmenu ToolBar
-set toolbariconsize=medium
-
+if has('mac') || has('unix')
+    set toolbariconsize=medium
+endif
 
 
 function! g:Toggle_Toolbar_Nerdtree()
