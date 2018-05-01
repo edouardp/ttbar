@@ -286,3 +286,64 @@ endfunction
 let g:toolbar_zoomwin_state = 1
 anoremenu icon=zoomwin-off 1.999 ToolBar.Zoomwin :call g:Toggle_Toolbar_Zoomwin()<CR>
 tmenu ToolBar.Zoomwin Toggle Zoomwin
+
+
+
+
+
+
+function! g:Display_Toolbar_IndentLines()
+    aunmenu ToolBar.IndentLines
+    if !exists("b:indentLine_enabled") && &shiftwidth == 2
+        anoremenu icon=indentlines-2 1.977 ToolBar.IndentLines :call g:Toggle_Toolbar_IndentLines()<CR>
+    elseif !exists("b:indentLine_enabled") && &shiftwidth == 4
+        anoremenu icon=indentlines-4 1.977 ToolBar.IndentLines :call g:Toggle_Toolbar_IndentLines()<CR>
+    elseif !exists("b:indentLine_enabled")
+        anoremenu icon=indentlines-4 1.977 ToolBar.IndentLines :call g:Toggle_Toolbar_IndentLines()<CR>
+    elseif exists("b:indentLine_enabled") && b:indentLine_enabled == 1 && &shiftwidth == 2
+        anoremenu icon=indentlines-2 1.977 ToolBar.IndentLines :call g:Toggle_Toolbar_IndentLines()<CR>
+    elseif exists("b:indentLine_enabled") && b:indentLine_enabled == 1 && &shiftwidth == 4
+        anoremenu icon=indentlines-4 1.977 ToolBar.IndentLines :call g:Toggle_Toolbar_IndentLines()<CR>
+    elseif exists("b:indentLine_enabled") && b:indentLine_enabled == 1 
+        anoremenu icon=indentlines-4 1.977 ToolBar.IndentLines :call g:Toggle_Toolbar_IndentLines()<CR>
+    elseif exists("b:indentLine_enabled") && b:indentLine_enabled == 0 
+        anoremenu icon=indentlines-off 1.977 ToolBar.IndentLines :call g:Toggle_Toolbar_IndentLines()<CR>
+    endif
+    tmenu ToolBar.IndentLines Switch IndentLines Settings
+endfunction
+
+function! g:Toggle_Toolbar_IndentLines()
+    if !exists("b:indentLine_enabled") && &shiftwidth == 2
+        IndentLinesReset 4
+        call g:Display_Toolbar_IndentLines()
+        echo "IndentLines On (4 spaces)"
+    elseif !exists("b:indentLine_enabled") && &shiftwidth == 4
+        IndentLinesDisable
+        call g:Display_Toolbar_IndentLines()
+        echo "IndentLines Off"
+    elseif !exists("b:indentLine_enabled")
+        IndentLinesDisable
+        call g:Display_Toolbar_IndentLines()
+        echo "IndentLines Off"
+    elseif exists("b:indentLine_enabled") && b:indentLine_enabled == 1 && &shiftwidth == 2
+        IndentLinesReset 4
+        call g:Display_Toolbar_IndentLines()
+        echo "IndentLines On (4 spaces)"
+    elseif exists("b:indentLine_enabled") && b:indentLine_enabled == 1 && &shiftwidth == 4
+        IndentLinesDisable
+        call g:Display_Toolbar_IndentLines()
+        echo "IndentLines Off"
+    elseif exists("b:indentLine_enabled") && b:indentLine_enabled == 1 
+        IndentLinesDisable
+        call g:Display_Toolbar_IndentLines()
+        echo "IndentLines Off"
+    elseif exists("b:indentLine_enabled") && b:indentLine_enabled == 0 
+        IndentLinesReset 2
+        call g:Display_Toolbar_IndentLines()
+        echo "IndentLines On (2 spaces)"
+    endif
+endfunction
+
+anoremenu icon=indentlines-4 1.977 ToolBar.IndentLines :call g:Toggle_Toolbar_IndentLines()<CR>
+tmenu ToolBar.IndentLines Change IndentLines
+
