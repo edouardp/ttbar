@@ -203,8 +203,10 @@ tmenu ToolBar.80th 80th Column Indicator
 
 
 function! g:Display_Window_Toolbar()
+    " g:NERDTree.ExistsForTab()
     call g:Display_Toolbar_Fold()
     call g:Display_Toolbar_Number()
+    call g:Display_Toolbar_IndentLines()
     call g:Display_Toolbar_Hidden()
     call g:Display_Toolbar_Cursor()
     call g:Display_Toolbar_80th()
