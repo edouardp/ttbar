@@ -6,26 +6,38 @@ if has('mac') || has('unix')
 endif
 
 
-function! g:Toggle_Toolbar_Nerdtree()
-    if !exists('g:toolbar_nerdtree_state')
-        let g:toolbar_nerdtree_state = 2
-    endif
+function! g:Display_Toolbar_Nerdtree()
     aunmenu ToolBar.NERDTree
-    if g:toolbar_nerdtree_state == 1
-        let g:toolbar_nerdtree_state = 2
-        anoremenu icon=nerdtree-on 1.950 ToolBar.NERDTree :call g:Toggle_Toolbar_Nerdtree()<CR>
-        NERDTree
-        echo "NERDTree On"
+    if exists('g:NERDTree')
+        if g:NERDTree.IsOpen()
+            anoremenu icon=nerdtree-on 1.950 ToolBar.NERDTree :call g:Toggle_Toolbar_Nerdtree()<CR>
+        else
+            anoremenu icon=nerdtree-off 1.950 ToolBar.NERDTree :call g:Toggle_Toolbar_Nerdtree()<CR>
+        endif
     else
-        let g:toolbar_nerdtree_state = 1
         anoremenu icon=nerdtree-off 1.950 ToolBar.NERDTree :call g:Toggle_Toolbar_Nerdtree()<CR>
-        NERDTreeClose
-        echo "NERDTree Off"
     endif
-    tmenu ToolBar.NERDTree Toggle NERDTree
 endfunction
 
-let g:toolbar_nerdtree_state = 1
+
+function! g:Toggle_Toolbar_Nerdtree()
+    if exists('g:NERDTree')
+        if g:NERDTree.IsOpen()
+            NERDTreeClose
+            echo "NERDTree Off"
+            return
+        else
+            NERDTree
+            echo "NERDTree On"
+        endif
+    else
+        NERDTree
+        echo "NERDTree On"
+    endif
+    call g:Display_Toolbar_Nerdtree()
+endfunction
+
+
 anoremenu icon=nerdtree-off 1.950 ToolBar.NERDTree :call g:Toggle_Toolbar_Nerdtree()<CR>
 tmenu ToolBar.NERDTree Toggle NERDTree
 
@@ -155,16 +167,19 @@ function! g:Toggle_Toolbar_Cursor()
     if !&cursorline && !&cursorcolumn
         set nocursorcolumn
         set cursorline
+        set concealcursor=c
         call g:Display_Toolbar_Cursor()
         echo "Cursor Highlight: Line"
     elseif &cursorline && !&cursorcolumn
         set cursorcolumn
         set cursorline
+        set concealcursor=c
         call g:Display_Toolbar_Cursor()
         echo "Cursor Highlight: Line & Column"
     elseif &cursorline && &cursorcolumn
         set nocursorcolumn
         set nocursorline
+        set concealcursor=nic
         call g:Display_Toolbar_Cursor()
         echo "Cursor Highlighting Off"
     endif
@@ -203,7 +218,7 @@ tmenu ToolBar.80th 80th Column Indicator
 
 
 function! g:Display_Window_Toolbar()
-    " g:NERDTree.ExistsForTab()
+    call g:Display_Toolbar_Nerdtree()
     call g:Display_Toolbar_Fold()
     call g:Display_Toolbar_Number()
     call g:Display_Toolbar_IndentLines()
