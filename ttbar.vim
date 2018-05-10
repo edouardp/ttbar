@@ -28,10 +28,12 @@ function! g:Toggle_Toolbar_Nerdtree()
             return
         else
             NERDTree
+            call webdevicons#softRefresh()
             echo "NERDTree On"
         endif
     else
         NERDTree
+        call webdevicons#softRefresh()
         echo "NERDTree On"
     endif
     call g:Display_Toolbar_Nerdtree()
@@ -332,33 +334,34 @@ endfunction
 function! g:Toggle_Toolbar_IndentLines()
     if !exists("b:indentLine_enabled") && &shiftwidth == 2
         IndentLinesReset 4
-        call g:Display_Toolbar_IndentLines()
+        set concealcursor=c
         echo "IndentLines On (4 spaces)"
     elseif !exists("b:indentLine_enabled") && &shiftwidth == 4
         IndentLinesDisable
-        call g:Display_Toolbar_IndentLines()
+        set concealcursor=c
         echo "IndentLines Off"
     elseif !exists("b:indentLine_enabled")
         IndentLinesDisable
-        call g:Display_Toolbar_IndentLines()
+        set concealcursor=c
         echo "IndentLines Off"
     elseif exists("b:indentLine_enabled") && b:indentLine_enabled == 1 && &shiftwidth == 2
         IndentLinesReset 4
-        call g:Display_Toolbar_IndentLines()
+        set concealcursor=c
         echo "IndentLines On (4 spaces)"
     elseif exists("b:indentLine_enabled") && b:indentLine_enabled == 1 && &shiftwidth == 4
         IndentLinesDisable
-        call g:Display_Toolbar_IndentLines()
+        set concealcursor=c
         echo "IndentLines Off"
     elseif exists("b:indentLine_enabled") && b:indentLine_enabled == 1 
         IndentLinesDisable
-        call g:Display_Toolbar_IndentLines()
+        set concealcursor=c
         echo "IndentLines Off"
     elseif exists("b:indentLine_enabled") && b:indentLine_enabled == 0 
         IndentLinesReset 2
-        call g:Display_Toolbar_IndentLines()
+        set concealcursor=c
         echo "IndentLines On (2 spaces)"
     endif
+    call g:Display_Toolbar_IndentLines()
 endfunction
 
 anoremenu icon=indentlines-4 1.977 ToolBar.IndentLines :call g:Toggle_Toolbar_IndentLines()<CR>
