@@ -219,19 +219,6 @@ tmenu ToolBar.80th 80th Column Indicator
 
 
 
-function! g:Display_Window_Toolbar()
-    call g:Display_Toolbar_Nerdtree()
-    call g:Display_Toolbar_Fold()
-    call g:Display_Toolbar_Number()
-    call g:Display_Toolbar_IndentLines()
-    call g:Display_Toolbar_Hidden()
-    call g:Display_Toolbar_Cursor()
-    call g:Display_Toolbar_80th()
-endfunction
-
-autocmd! WinEnter * call g:Display_Window_Toolbar()
-
-
 
 function! g:Toggle_Toolbar_Matchmaker()
     if !exists('g:toolbar_matchmaker_state')
@@ -366,4 +353,22 @@ endfunction
 
 anoremenu icon=indentlines-4 1.977 ToolBar.IndentLines :call g:Toggle_Toolbar_IndentLines()<CR>
 tmenu ToolBar.IndentLines Change IndentLines
+
+
+
+" -- Update Toolbar State on Window Enter ------------------------------------
+"
+
+function! g:Display_Window_Toolbar()
+    call g:Display_Toolbar_Nerdtree()
+    call g:Display_Toolbar_Fold()
+    call g:Display_Toolbar_Number()
+    call g:Display_Toolbar_IndentLines()
+    call g:Display_Toolbar_Hidden()
+    call g:Display_Toolbar_Cursor()
+    call g:Display_Toolbar_80th()
+endfunction
+
+autocmd! WinEnter * call g:Display_Window_Toolbar()
+
 
